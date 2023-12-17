@@ -1,0 +1,14 @@
+{
+    "name": "Flexible Notifications System",
+    "uri": "https://github.com/pupi1985/q2a-pupi-fns",
+    "description": "Allows users to receive notifications in a flexible and efficient way",
+    "version": "1.0.0",
+    "date": "2024-01-14",
+    "author": "Gabriel Zanetti",
+    "author_uri": "https://question2answer.org/qa/user/pupi1985",
+    "license": "GPLv3",
+    "update_uri": "https://raw.githubusercontent.com/pupi1985/q2a-pupi-fns/master/metadata.json",
+    "min_q2a": "1.8.0",
+    "min_php": "7.4.0",
+    "load_order": "after_db_init"
+}

@@ -1,0 +1,401 @@
+/*
+    This file is part of PUPI - Flexible Notifications System, a
+    Question2Answer plugin that helps manage Q2A's configuration.
+
+    Copyright (C) 2024 Gabriel Zanetti <https://github.com/pupi1985>
+
+    PUPI - Flexible Notifications System is free software: you can redistribute
+    it and/or modify it under the terms of the GNU General Public License as
+    published by the Free Software Foundation, either version 3 of the License,
+    or (at your option) any later version.
+
+    PUPI - Flexible Notifications System is distributed in the hope that it
+    will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty
+    of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+    Public License for more details.
+
+    You should have received a copy of the GNU General Public License along
+    with PUPI - Flexible Notifications System. If not, see
+    <http://www.gnu.org/licenses/>.
+*/
+
+.pupi_fns_notification-icon-container {
+    position: relative;
+    display: inline-flex;
+    margin: 0 0.25rem;
+    padding-top: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 57px;
+    min-height: 3rem;
+    color: #333;
+    background-color: #34495e;
+    user-select: none;
+    float: inline-end;
+}
+
+.pupi_fns_notification-icon-container:hover {
+    background-color: #445f7a;
+    cursor: pointer;
+}
+
+.pupi_fns_notification-icon-container:hover .pupi_fns_notification-icon-label {
+    box-shadow: 0 0 0 3px #445f7a;
+    top: .1rem;
+}
+
+.pupi_fns_notification-icon-container .pupi-fns-icon-bell:before,
+.pupi_fns_notification-icon-container .pupi-fns-icon-spin4:before {
+    font-size: 32px;
+    color: #fff;
+}
+
+.pupi_fns_notification-icon-label {
+    position: absolute;
+    font-size: .9rem;
+    display: flex;
+    top: .25rem;
+    inset-inline-end: 0.2rem;
+    justify-content: center;
+    align-items: center;
+    width: 1.15rem;
+    height: 1.15rem;
+    background: #d63232;
+    color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px #34495e;
+    transition: top cubic-bezier(.165, .84, .44, 1) .15s;
+}
+
+.pupi_fns_notification-list {
+    position: absolute;
+    inset-inline-end: 0;
+    top: 100%;
+    width: 21rem;
+    flex-direction: column;
+    margin-top: .5rem;
+    background-color: #fff;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, .1), 0 4px 6px -2px rgba(0, 0, 0, .05);
+    border-radius: .375rem;
+    border: 1px solid #bebebe;
+    cursor: initial;
+    z-index: 1000;
+    max-height: 19rem;
+    overflow-y: auto;
+}
+
+@media (min-width: 576px) {
+    .pupi_fns_notification-list {
+        width: 28rem;
+    }
+}
+
+.pupi_fns_notification-list.pupi_fns_no-notifications {
+    width: 16rem;
+    padding: .5rem;
+}
+
+.pupi_fns_notification-list::-webkit-scrollbar {
+    width: .9rem;
+}
+
+.pupi_fns_notification-list::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.pupi_fns_notification-list::-webkit-scrollbar-thumb {
+    background-color: #dedede;
+    border-radius: .375rem;
+    border: .25rem solid transparent;
+    background-clip: content-box;
+}
+
+.pupi_fns_notification-list::-webkit-scrollbar-thumb:hover {
+    background-color: #c8c8c8;
+}
+
+.pupi_fns_notification-list-no-notifications-header .pupi-fns-icon-envelope-open-o:before {
+    font-size: 48px;
+    color: #3a75af;
+}
+
+.pupi_fns_notification-list-no-notifications-header {
+    display: flex;
+    justify-content: center;
+}
+
+.pupi_fns_notification-list-no-notifications-body {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.25rem;
+}
+
+.pupi_fns_notification-item {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+    padding: .5rem;
+    border-bottom: 1px solid #ccc;
+    font-size: .85rem;
+    color: #333;
+}
+
+a.pupi_fns_notification-item,
+a.pupi_fns_notification-item:hover {
+    text-decoration: none;
+    color: #333;
+}
+
+a.pupi_fns_notification-item:hover {
+    background-color: #f0f0f0;
+}
+
+.pupi_fns_notification-item:last-child {
+    border-bottom: initial;
+}
+
+.pupi_fns_notification-item.pupi_fns_is-read {
+    background-color: #f8f8f8;
+}
+
+.pupi_fns_notification-item-header {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: .8rem;
+    color: #444;
+}
+
+.pupi_fns_notification-item-body {
+    font-weight: bold;
+    font-size: .9rem;
+    color: #155ca2;
+}
+
+.pupi_fns_notification-item-date {
+    margin-inline-start: auto;
+}
+
+.pupi_fns_notification-item-is-read {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-inline-end: 0.5rem;
+}
+
+.pupi_fns_notification-item-is-read-dot {
+    width: .4rem;
+    height: .4rem;
+    border-radius: 50%;
+}
+
+.pupi_fns_notification-item-is-read-dot-red {
+    background: #d63232;
+    box-shadow: 0 0 0 1px #b01f1f;
+}
+
+.pupi_fns_notification-item-is-read-dot-grey {
+    background: #9d9898;
+    box-shadow: 0 0 0 1px #888;
+}
+
+.pupi_fns_notification-list .pupi-fns-icon-bell:before {
+    font-size: 16px;
+    color: black;
+}
+
+/* Fontello */
+
+[class^="pupi-fns-icon-"]:before, [class*=" pupi-fns-icon-"]:before {
+    font-family: "pupi-fns-fontello";
+    font-style: normal;
+    font-weight: normal;
+    speak: never;
+
+    display: inline-block;
+    text-decoration: inherit;
+    width: 1em;
+    margin-inline-end: .2em;
+    text-align: center;
+    /* opacity: .8; */
+
+    /* For safety - reset parent styles, that can break glyph codes*/
+    font-variant: normal;
+    text-transform: none;
+
+    /* fix buttons height, for twitter bootstrap */
+    line-height: 1em;
+
+    /* Animation center compensation - margins should be symmetric */
+    /* remove if not needed */
+    margin-inline-start: .2em;
+
+    /* you can be more comfortable with increased icons size */
+    /* font-size: 120%; */
+
+    /* Font smoothing. That was taken from TWBS */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Uncomment for 3D effect */
+    /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+
+.pupi-fns-icon-spin4:before {
+    content: "\e800";
+}
+
+.pupi-fns-icon-bell:before {
+    content: "\e801";
+}
+
+.pupi-fns-icon-envelope-open-o:before {
+    content: "\e802";
+}
+
+.pupi-fns-icon-chat:before {
+    content: "\e803";
+}
+
+.pupi-fns-icon-chat-empty:before {
+    content: "\e804";
+}
+
+.pupi-fns-icon-lock:before {
+    content: "\e805";
+}
+
+.pupi-fns-icon-lock-open:before {
+    content: "\e806";
+}
+
+.pupi-fns-icon-tag:before {
+    content: "\e807";
+}
+
+.pupi-fns-icon-check:before {
+    content: "\e808";
+}
+
+.pupi-fns-icon-check-empty:before {
+    content: "\e809";
+}
+
+.pupi-fns-icon-up-open:before {
+    content: "\e80a";
+}
+
+.pupi-fns-icon-down-open:before {
+    content: "\e80b";
+}
+
+.pupi-fns-icon-minus:before {
+    content: "\e80c";
+}
+
+.pupi-fns-icon-mail:before {
+    content: "\e80d";
+}
+
+.pupi-fns-icon-pin:before {
+    content: "\e80e";
+}
+
+.pupi-fns-icon-user:before {
+    content: "\e80f";
+}
+
+/* Animation */
+
+/*
+   Animation example, for spinners
+*/
+.animate-spin {
+    -moz-animation: spin 2s infinite linear;
+    -o-animation: spin 2s infinite linear;
+    -webkit-animation: spin 2s infinite linear;
+    animation: spin 2s infinite linear;
+    display: inline-block;
+}
+
+@-moz-keyframes spin {
+    0% {
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -moz-transform: rotate(359deg);
+        -o-transform: rotate(359deg);
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -moz-transform: rotate(359deg);
+        -o-transform: rotate(359deg);
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+
+@-o-keyframes spin {
+    0% {
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -moz-transform: rotate(359deg);
+        -o-transform: rotate(359deg);
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+
+@-ms-keyframes spin {
+    0% {
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -moz-transform: rotate(359deg);
+        -o-transform: rotate(359deg);
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -moz-transform: rotate(359deg);
+        -o-transform: rotate(359deg);
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
