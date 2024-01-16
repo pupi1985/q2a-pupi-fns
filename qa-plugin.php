@@ -46,7 +46,7 @@ qa_register_plugin_module('page', 'PUPI_FNS_NotificationsPage.php', 'PUPI_FNS_No
 qa_register_plugin_phrases('lang/' . PUPI_FNS_Constants::LANG_PREFIX . '_*.php', PUPI_FNS_Constants::LANG_PREFIX);
 
 qa_register_plugin_layer('PUPI_FNS_NotificationsDataLayer.php', 'PUPI_FNS Notifications Data Layer');
-if (qa_opt(PUPI_FNS_Constants::SETTING_USE_BUILTIN_SCHEMA)) {
+if (qa_opt_if_loaded(PUPI_FNS_Constants::SETTING_USE_BUILTIN_SCHEMA) ?? PUPI_FNS_Constants::SETTING_USE_BUILTIN_SCHEMA_DEFAULT) {
     qa_register_plugin_layer('PUPI_FNS_BuiltInNotificationsRendererLayer.php', 'PUPI_FNS BuiltIn Notifications Renderer Layer');
     pupi_fns()->getExtensionsManager()->register(new PUPI_FNS_CoreExtension());
 }

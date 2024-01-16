@@ -37,7 +37,6 @@ class PUPI_FNS_NotificationsPage
 
     public function process_request($request)
     {
-        sleep(3);
         $response = [];
         try {
             $this->checkAuthentication();
