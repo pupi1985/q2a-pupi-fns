@@ -38,13 +38,14 @@ class PUPI_FNS_NotificationsPage
     public function process_request($request)
     {
         $response = [];
+
+        header('Content-type: application/json');
+
         try {
             $this->checkAuthentication();
             $type = $this->getTypeParam();
 
             $notificationsService = new PUPI_FNS_NotificationsService();
-
-            header('Content-type: application/json');
 
             $userId = qa_get_logged_in_userid();
             $handle = qa_get_logged_in_handle();
