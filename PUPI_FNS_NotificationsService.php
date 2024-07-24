@@ -2,7 +2,8 @@
 
 /*
     This file is part of PUPI - Flexible Notifications System, a
-    Question2Answer plugin that helps manage Q2A's configuration.
+    Question2Answer plugin that allows users to receive notifications in a
+    flexible and efficient way.
 
     Copyright (C) 2024 Gabriel Zanetti <https://github.com/pupi1985>
 
