@@ -113,7 +113,9 @@ class PUPI_FNS_NotificationsService
 
         unset($result[$triggeringUserId]);
 
-        return array_flip($result);
+        return empty($result) || reset($result) === null
+            ? []
+            : $result;
     }
 
     /**
