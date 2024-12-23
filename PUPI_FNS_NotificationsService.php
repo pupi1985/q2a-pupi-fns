@@ -73,7 +73,7 @@ class PUPI_FNS_NotificationsService
                 $result[$notificationParams['parent.userid']] = $notificationParams['parent.userid'];
 
                 foreach ($params['thread'] as $comment) {
-                    if (isset($comment['notify']) && !qa_post_is_by_user($comment, $triggeringUserId, null)) {
+                    if (!qa_post_is_by_user($comment, $triggeringUserId, null)) {
                         $result[$comment['userid']] = $comment['userid'];
                     }
                 }
